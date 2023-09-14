@@ -12,6 +12,8 @@ public class Demo1 {
         list.clear();
         System.out.println(list.size());
         System.out.println(list);
+        System.out.println(list.remove(3));
+        System.out.println(list);
         
     }
 }
@@ -111,9 +113,36 @@ public String toString() {
 
     @Override
     public int remove(int index) throws ArrayIndexOutOfBoundsException {
-        
-        return 0;
+        if(index < 0 || index > size){
+            throw new ArrayIndexOutOfBoundsException("Invalid index" + index);
+            int value1;
+            if(index==0){
+                value1 = head.value;
+                head = head.next;
+                head.previous = null;
+            }else if(index ==(size-1)){
+                 value1 = tail.value;
+
+                tail =tail.previous;
+                tail.next = null;
+            }else{
+                MyNode temp = head;
+            
+                for(int i = 0;i<index -1;i++){
+                    temp = temp.next;
+                }
+                value1 = temp.next.value;
+                
+                temp.next.next.previous = temp;
+                temp.next = temp.next.next;
+            }
+            size--;
+            
+            return value1;
+        }
+            
     }
+    
 
     @Override
     public int set(int index, int value) throws ArrayIndexOutOfBoundsException {
