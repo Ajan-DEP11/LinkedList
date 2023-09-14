@@ -53,13 +53,27 @@ class MyLinkedList implements MyList{
     @Override
 public String toString() {
    
-    return super.toString();
+    String str = "[";
+    MyNode temp = head;
+    while(temp != null){
+        str += temp.value + (temp.next != null ? ",":"");
+        temp = temp.next;
+    }
+    str +="]";
+    return str;
 }
 
     @Override
     public void add(int value) {
+        if(size==0){
+            head =new MyNode(value, null);
+            tail =head;
+        }else{
+           tail.next= new MyNode( value,tail);
+           tail = tail.next;
+        }
         
-        
+        size++;
     }
 
     @Override
