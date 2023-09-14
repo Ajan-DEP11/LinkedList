@@ -24,6 +24,7 @@ interface MyList{
     int remove(int index) throws ArrayIndexOutOfBoundsException;
     void clear();
     int size();
+    int get(int index)throws ArrayIndexOutOfBoundsException;
     int set(int index, int value) throws ArrayIndexOutOfBoundsException;
     boolean contains(int value);
     int indexOf(int value);
